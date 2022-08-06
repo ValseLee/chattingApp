@@ -15,6 +15,9 @@
 		703B3CED289E14A300F2CE1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 703B3CEB289E14A300F2CE1D /* LaunchScreen.storyboard */; };
 		703B3CFC289E150900F2CE1D /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CFB289E150900F2CE1D /* ConversationsViewController.swift */; };
 		703B3CFE289E19D900F2CE1D /* Constanats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CFD289E19D900F2CE1D /* Constanats.swift */; };
+		703B3D01289E1C0F00F2CE1D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3D00289E1C0F00F2CE1D /* LoginViewController.swift */; };
+		703B3D03289E1C1800F2CE1D /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3D02289E1C1800F2CE1D /* RegistrationViewController.swift */; };
+		703B3D05289E200600F2CE1D /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3D04289E200600F2CE1D /* extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		703B3CEE289E14A300F2CE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		703B3CFB289E150900F2CE1D /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		703B3CFD289E19D900F2CE1D /* Constanats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constanats.swift; sourceTree = "<group>"; };
+		703B3D00289E1C0F00F2CE1D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		703B3D02289E1C1800F2CE1D /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		703B3D04289E200600F2CE1D /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +66,14 @@
 		703B3CDF289E14A300F2CE1D /* chatting */ = {
 			isa = PBXGroup;
 			children = (
+				703B3CE0289E14A300F2CE1D /* AppDelegate.swift */,
+				703B3CE2289E14A300F2CE1D /* SceneDelegate.swift */,
 				703B3CFA289E14D300F2CE1D /* Utility */,
 				703B3CF9289E14C200F2CE1D /* Models */,
 				703B3CF8289E14C100F2CE1D /* Views */,
 				703B3CF7289E14C000F2CE1D /* ViewModels */,
 				703B3CF6289E14BE00F2CE1D /* Controllers */,
 				703B3CF4289E14B900F2CE1D /* API */,
-				703B3CE0289E14A300F2CE1D /* AppDelegate.swift */,
-				703B3CE2289E14A300F2CE1D /* SceneDelegate.swift */,
 				703B3CE4289E14A300F2CE1D /* ViewController.swift */,
 				703B3CE6289E14A300F2CE1D /* Main.storyboard */,
 				703B3CE9289E14A300F2CE1D /* Assets.xcassets */,
@@ -87,6 +93,7 @@
 		703B3CF6289E14BE00F2CE1D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				703B3CFF289E1BF100F2CE1D /* Auth */,
 				703B3CFB289E150900F2CE1D /* ConversationsViewController.swift */,
 			);
 			path = Controllers;
@@ -117,8 +124,18 @@
 		703B3CFA289E14D300F2CE1D /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				703B3D04289E200600F2CE1D /* extensions.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		703B3CFF289E1BF100F2CE1D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				703B3D00289E1C0F00F2CE1D /* LoginViewController.swift */,
+				703B3D02289E1C1800F2CE1D /* RegistrationViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,9 +209,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				703B3D01289E1C0F00F2CE1D /* LoginViewController.swift in Sources */,
 				703B3CE5289E14A300F2CE1D /* ViewController.swift in Sources */,
 				703B3CE1289E14A300F2CE1D /* AppDelegate.swift in Sources */,
+				703B3D05289E200600F2CE1D /* extensions.swift in Sources */,
 				703B3CFE289E19D900F2CE1D /* Constanats.swift in Sources */,
+				703B3D03289E1C1800F2CE1D /* RegistrationViewController.swift in Sources */,
 				703B3CE3289E14A300F2CE1D /* SceneDelegate.swift in Sources */,
 				703B3CFC289E150900F2CE1D /* ConversationsViewController.swift in Sources */,
 			);
