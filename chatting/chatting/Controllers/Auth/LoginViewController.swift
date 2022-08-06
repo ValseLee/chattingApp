@@ -18,18 +18,72 @@ final class LoginViewController: UIViewController {
 		return mainImage
 	}()
 	
-	private let emailContainerView: UIView = {
-		let view = UIView()
-		view.backgroundColor = .none
-		view.setHeight(height: 50)
-		return view
+	private lazy var emailContainerView: UIView = {
+		let container = UIView()
+		container.backgroundColor = .none
+		container.setHeight(height: 50)
+		
+		let iconView = UIImageView()
+		iconView.image = UIImage(systemName: "envelope")
+		iconView.tintColor = .black
+		
+		container.addSubview(iconView)
+		iconView.centerY(inView: container)
+		iconView.setAnchorTRBL(left: container.leftAnchor, paddingLeft: 10)
+		iconView.setPosition(height: 24, width: 24)
+		
+		container.addSubview(emailTextField)
+		emailTextField.centerY(inView: container)
+		emailTextField.setAnchorTRBL(right: container.rightAnchor,
+									 bottom: container.bottomAnchor,
+									 left: iconView.rightAnchor,
+									 paddingRight: 0,
+									 paddingBottom: 4,
+									 paddingLeft: 10
+		)
+		
+		return container
 	}()
 	
-	private let passwordContainerView: UIView = {
-		let view = UIView()
-		view.backgroundColor = .none
-		view.setHeight(height: 50)
-		return view
+	private let emailTextField: UITextField = {
+		let tf = UITextField()
+		tf.placeholder = "Email"
+		tf.autocorrectionType = .no
+		tf.autocapitalizationType = .none
+		return tf
+	}()
+	
+	private lazy var passwordContainerView: UIView = {
+		let container = UIView()
+		container.backgroundColor = .none
+		container.setHeight(height: 50)
+		
+		let iconView = UIImageView()
+		iconView.image = UIImage(systemName: "lock")
+		iconView.tintColor = .black
+		
+		container.addSubview(iconView)
+		iconView.centerY(inView: container)
+		iconView.setAnchorTRBL(left: container.leftAnchor, paddingLeft: 10)
+		iconView.setPosition(height: 24, width: 24)
+		
+		container.addSubview(passwordTextField)
+		passwordTextField.centerY(inView: container)
+		passwordTextField.setAnchorTRBL(right: container.rightAnchor,
+									 bottom: container.bottomAnchor,
+									 left: iconView.rightAnchor,
+									 paddingRight: 0,
+									 paddingBottom: 0,
+									 paddingLeft: 10
+		)
+		return container
+	}()
+	
+	private let passwordTextField: UITextField = {
+		let tf = UITextField()
+		tf.placeholder = "Password"
+		tf.isSecureTextEntry = true
+		return tf
 	}()
 	
 	private let loginBtn: UIButton = {
