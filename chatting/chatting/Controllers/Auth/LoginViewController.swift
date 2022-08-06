@@ -18,81 +18,39 @@ final class LoginViewController: UIViewController {
 		return mainImage
 	}()
 	
-	private lazy var emailContainerView: UIView = {
-		let container = UIView()
-		container.backgroundColor = .none
-		container.setHeight(height: 50)
-		
-		let iconView = UIImageView()
-		iconView.image = UIImage(systemName: "envelope")
-		iconView.tintColor = .black
-		
-		container.addSubview(iconView)
-		iconView.centerY(inView: container)
-		iconView.setAnchorTRBL(left: container.leftAnchor, paddingLeft: 10)
-		iconView.setPosition(height: 24, width: 24)
-		
-		container.addSubview(emailTextField)
-		emailTextField.centerY(inView: container)
-		emailTextField.setAnchorTRBL(right: container.rightAnchor,
-									 bottom: container.bottomAnchor,
-									 left: iconView.rightAnchor,
-									 paddingRight: 0,
-									 paddingBottom: 4,
-									 paddingLeft: 10
+	private lazy var emailContainerView: InputContainerView = {
+		return InputContainerView(
+			image: UIImage(systemName: "envelope"),
+			textField: emailTextField
 		)
-		
-		return container
 	}()
 	
-	private let emailTextField: UITextField = {
-		let tf = UITextField()
-		tf.placeholder = "Email"
-		tf.autocorrectionType = .no
-		tf.autocapitalizationType = .none
-		return tf
-	}()
-	
-	private lazy var passwordContainerView: UIView = {
-		let container = UIView()
-		container.backgroundColor = .none
-		container.setHeight(height: 50)
-		
-		let iconView = UIImageView()
-		iconView.image = UIImage(systemName: "lock")
-		iconView.tintColor = .black
-		
-		container.addSubview(iconView)
-		iconView.centerY(inView: container)
-		iconView.setAnchorTRBL(left: container.leftAnchor, paddingLeft: 10)
-		iconView.setPosition(height: 24, width: 24)
-		
-		container.addSubview(passwordTextField)
-		passwordTextField.centerY(inView: container)
-		passwordTextField.setAnchorTRBL(right: container.rightAnchor,
-									 bottom: container.bottomAnchor,
-									 left: iconView.rightAnchor,
-									 paddingRight: 0,
-									 paddingBottom: 0,
-									 paddingLeft: 10
+	private lazy var passwordContainerView: InputContainerView = {
+		return InputContainerView(
+			image: UIImage(systemName: "lock"),
+			textField: passwordTextField
 		)
-		return container
 	}()
 	
-	private let passwordTextField: UITextField = {
-		let tf = UITextField()
-		tf.placeholder = "Password"
+	private let emailTextField = CustomTextFields(placeholder: "Email")
+	
+	private let passwordTextField: CustomTextFields = {
+		let tf = CustomTextFields(placeholder: "Password")
 		tf.isSecureTextEntry = true
 		return tf
 	}()
 	
 	private let loginBtn: UIButton = {
 		let btn = UIButton(type: .system)
-		btn.setTitle("Log In", for: .normal)
-		btn.layer.cornerRadius = 5.0
-		btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-		btn.backgroundColor = .systemGreen
 		btn.setHeight(height: 50)
+		btn.setTitle("Log In", for: .normal)
+		btn.setTitleColor(.systemPurple, for: .normal)
+		btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+		
+		btn.backgroundColor = .clear
+		btn.layer.borderWidth = 0.75
+		btn.layer.borderColor = UIColor.white.cgColor
+		btn.layer.cornerRadius = 20
 		return btn
 	}()
 
@@ -110,9 +68,11 @@ final class LoginViewController: UIViewController {
 	}
 	
 	func configStackView() {
-		let stack = UIStackView(arrangedSubviews: [
-			emailContainerView, passwordContainerView, loginBtn
-		])
+		let stack = UIStackView(
+			arrangedSubviews: [
+				emailContainerView, passwordContainerView, loginBtn
+			]
+		)
 		stack.axis = .vertical
 		stack.distribution = .fill
 		stack.spacing = 16
@@ -131,13 +91,13 @@ final class LoginViewController: UIViewController {
 		iconImage.centerX(inView: view)
 		iconImage.setAnchorTRBL(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
 		iconImage.setPosition(height: 120, width: 120)
-
-//		NSLayoutConstraint.activate([
-//			iconImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//			iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//			iconImage.heightAnchor.constraint(equalToConstant: 120),
-//			iconImage.widthAnchor.constraint(equalToConstant: 120),
-//		])
+		
+		//		NSLayoutConstraint.activate([
+		//			iconImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+		//			iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+		//			iconImage.heightAnchor.constraint(equalToConstant: 120),
+		//			iconImage.widthAnchor.constraint(equalToConstant: 120),
+		//		])
 	}
 	
 	func configGradientBackground() {
