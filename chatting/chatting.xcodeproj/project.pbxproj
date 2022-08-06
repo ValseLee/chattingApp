@@ -14,6 +14,7 @@
 		703B3CEA289E14A300F2CE1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 703B3CE9289E14A300F2CE1D /* Assets.xcassets */; };
 		703B3CED289E14A300F2CE1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 703B3CEB289E14A300F2CE1D /* LaunchScreen.storyboard */; };
 		703B3CFC289E150900F2CE1D /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CFB289E150900F2CE1D /* ConversationsViewController.swift */; };
+		703B3CFE289E19D900F2CE1D /* Constanats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CFD289E19D900F2CE1D /* Constanats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		703B3CEC289E14A300F2CE1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		703B3CEE289E14A300F2CE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		703B3CFB289E150900F2CE1D /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
+		703B3CFD289E19D900F2CE1D /* Constanats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constanats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		703B3CF9289E14C200F2CE1D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				703B3CFD289E19D900F2CE1D /* Constanats.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			files = (
 				703B3CE5289E14A300F2CE1D /* ViewController.swift in Sources */,
 				703B3CE1289E14A300F2CE1D /* AppDelegate.swift in Sources */,
+				703B3CFE289E19D900F2CE1D /* Constanats.swift in Sources */,
 				703B3CE3289E14A300F2CE1D /* SceneDelegate.swift in Sources */,
 				703B3CFC289E150900F2CE1D /* ConversationsViewController.swift in Sources */,
 			);
