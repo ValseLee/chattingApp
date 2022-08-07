@@ -53,6 +53,31 @@ final class LoginViewController: UIViewController {
 		btn.layer.cornerRadius = 20
 		return btn
 	}()
+	
+	private let signUpbtn: UIButton = {
+		let btn = UIButton(type: .system)
+		let attributed = NSMutableAttributedString(
+			string: "Don't have an account? ",
+			attributes: [
+				.font: UIFont.systemFont(ofSize: 16),
+				.foregroundColor: UIColor.systemPurple
+			]
+		)
+		
+		attributed.append(
+			NSAttributedString(
+				string: "Sign Up",
+				attributes: [
+					.font: UIFont.boldSystemFont(ofSize: 16),
+					.foregroundColor: UIColor.systemPurple
+				]
+			)
+		)
+		
+		btn.setAttributedTitle(attributed, for: .normal)
+		btn.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
+		return btn
+	}()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +85,7 @@ final class LoginViewController: UIViewController {
 		configGradientBackground()
 		configAutolayout()
 		configStackView()
+		configSignUpView()
     }
     
 	func configNavBarUI() {
@@ -86,6 +112,17 @@ final class LoginViewController: UIViewController {
 		)
 	}
 	
+	func configSignUpView() {
+		view.addSubview(signUpbtn)
+		signUpbtn.setAnchorTRBL(
+			right: view.safeAreaLayoutGuide.rightAnchor,
+			bottom: view.safeAreaLayoutGuide.bottomAnchor,
+			left: view.safeAreaLayoutGuide.leftAnchor,
+			paddingRight: 32,
+			paddingLeft: 32
+		)
+	}
+	
 	func configAutolayout() {
 		view.addSubview(iconImage)
 		iconImage.centerX(inView: view)
@@ -106,5 +143,11 @@ final class LoginViewController: UIViewController {
 		gradient.locations = [0.0 , 0.5]
 		view.layer.addSublayer(gradient)
 		gradient.frame = view.frame
+	}
+	
+	// MARK: Selectors
+	@objc func showSignUp() {
+		let regiVC = RegistrationViewController()
+		navigationController?.pushViewController(regiVC, animated: true)
 	}
 }

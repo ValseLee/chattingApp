@@ -16,7 +16,7 @@ final class InputContainerView: UIView {
 		
 		let iconView = UIImageView()
 		iconView.image = image
-		iconView.tintColor = .black
+		iconView.tintColor = .systemPurple
 		
 		addSubview(iconView)
 		iconView.centerY(inView: self)
