@@ -63,7 +63,7 @@ extension UIView {
 		}
 	}
 	
-	func setPosition(height: CGFloat, width: CGFloat) {
+	func setSize(height: CGFloat, width: CGFloat) {
 		translatesAutoresizingMaskIntoConstraints = false
 		heightAnchor.constraint(equalToConstant: height).isActive = true
 		widthAnchor.constraint(equalToConstant: width).isActive = true
@@ -77,5 +77,15 @@ extension UIView {
 	func setWidth(width: CGFloat) {
 		translatesAutoresizingMaskIntoConstraints = false
 		widthAnchor.constraint(equalToConstant: width).isActive = true
+	}
+}
+
+extension UIViewController {
+	func configGradientBackground() {
+		let gradient = CAGradientLayer()
+		gradient.colors = [UIColor.systemGreen.cgColor, UIColor.systemYellow.cgColor]
+		gradient.locations = [0.0 , 0.5]
+		view.layer.addSublayer(gradient)
+		gradient.frame = view.frame
 	}
 }

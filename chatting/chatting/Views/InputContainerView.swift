@@ -24,7 +24,7 @@ final class InputContainerView: UIView {
 			left: self.leftAnchor,
 			paddingLeft: 10
 		)
-		iconView.setPosition(height: 24, width: 24)
+		iconView.setSize(height: 24, width: 24)
 		
 		addSubview(textField)
 		textField.centerY(inView: self)

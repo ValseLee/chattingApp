@@ -127,7 +127,7 @@ final class LoginViewController: UIViewController {
 		view.addSubview(iconImage)
 		iconImage.centerX(inView: view)
 		iconImage.setAnchorTRBL(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
-		iconImage.setPosition(height: 120, width: 120)
+		iconImage.setSize(height: 120, width: 120)
 		
 		//		NSLayoutConstraint.activate([
 		//			iconImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -135,14 +135,6 @@ final class LoginViewController: UIViewController {
 		//			iconImage.heightAnchor.constraint(equalToConstant: 120),
 		//			iconImage.widthAnchor.constraint(equalToConstant: 120),
 		//		])
-	}
-	
-	func configGradientBackground() {
-		let gradient = CAGradientLayer()
-		gradient.colors = [UIColor.systemGreen.cgColor, UIColor.systemYellow.cgColor]
-		gradient.locations = [0.0 , 0.5]
-		view.layer.addSublayer(gradient)
-		gradient.frame = view.frame
 	}
 	
 	// MARK: Selectors
