@@ -6,7 +6,7 @@ target 'chatting' do
   use_frameworks!
 
   # Pods for chatting
-	pod 'FirebaseAuth'
+	pod 'FirebasesAuth'
 	pod 'FirebaseFirestore'
 	pod 'SDWebImage', '~>4.4.2'
 	pod 'JGProgressHUD', '~>2.0.3'
