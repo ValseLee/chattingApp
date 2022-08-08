@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIView {
-	
 	func setAnchorTRBL(top: NSLayoutYAxisAnchor? = nil,
 					   right: NSLayoutXAxisAnchor? = nil,
 					   bottom: NSLayoutYAxisAnchor? = nil,

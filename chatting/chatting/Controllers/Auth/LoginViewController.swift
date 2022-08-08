@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AuthrizationCheck {
+	func checkFormStatus()
+}
+
 final class LoginViewController: UIViewController {
 	
 	private var viewModel = LoginViewModel()
@@ -148,17 +152,6 @@ final class LoginViewController: UIViewController {
 		//		])
 	}
 	
-	func checkFormStatus() {
-		if viewModel.formIsValid {
-			loginBtn.isEnabled = true
-			loginBtn.layer.borderWidth = 0.0
-			loginBtn.backgroundColor = .systemGreen
-			loginBtn.setTitleColor(.white, for: .normal)
-		} else {
-			loginBtn.backgroundColor = .clear
-		}
-	}
-	
 	// MARK: Selectors
 	@objc func showSignUp() {
 		let regiVC = RegistrationViewController()
@@ -176,5 +169,18 @@ final class LoginViewController: UIViewController {
 	
 	@objc func loginBtnTapped() {
 		print(#function)
+	}
+}
+
+extension LoginViewController: AuthrizationCheck {
+	func checkFormStatus() {
+		if viewModel.formIsValid {
+			loginBtn.isEnabled = true
+			loginBtn.layer.borderWidth = 0.0
+			loginBtn.backgroundColor = .systemGreen
+			loginBtn.setTitleColor(.white, for: .normal)
+		} else {
+			loginBtn.backgroundColor = .clear
+		}
 	}
 }

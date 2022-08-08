@@ -7,13 +7,16 @@
 
 import UIKit
 
-final class RegistrationViewController: UIViewController {
+final class RegistrationViewController: UIViewController, UINavigationControllerDelegate {
+	
+	private var viewModel = RegistrationViewModel()
 	
 	private let addProfilePhotoBtn: UIButton = {
 		let btn = UIButton(type: .system)
 		btn.setImage(UIImage(systemName: "person.crop.circle.badge.plus"), for: .normal)
 		btn.tintColor = .white
 		btn.imageView?.contentMode = .scaleAspectFit
+		btn.clipsToBounds = true
 		btn.contentHorizontalAlignment = .fill
 		btn.contentVerticalAlignment = .fill
 		btn.addTarget(self, action: #selector(addProfilePhoto), for: .touchUpInside)
@@ -48,14 +51,27 @@ final class RegistrationViewController: UIViewController {
 		)
 	}()
 	
-	private let emailTextField = CustomTextFields(placeholder: "Email")
+	private let emailTextField: CustomTextFields = {
+		let tf = CustomTextFields(placeholder: "Email")
+		tf.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+		return tf
+	}()
 	
-	private let fullNameTextField = CustomTextFields(placeholder: "Full Name")
+	private let fullNameTextField: CustomTextFields = {
+		let tf = CustomTextFields(placeholder: "Full Name")
+		tf.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+		return tf
+	}()
 	
-	private let userNameTextField = CustomTextFields(placeholder: "User Name")
+	private let userNameTextField: CustomTextFields = {
+		let tf = CustomTextFields(placeholder: "User Name")
+		tf.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+		return tf
+	}()
 	
 	private let passwordTextField: CustomTextFields = {
 		let tf = CustomTextFields(placeholder: "Password")
+		tf.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
 		tf.isSecureTextEntry = true
 		return tf
 	}()
@@ -70,6 +86,8 @@ final class RegistrationViewController: UIViewController {
 		btn.layer.borderWidth = 0.75
 		btn.layer.borderColor = UIColor.white.cgColor
 		btn.layer.cornerRadius = 20
+		btn.addTarget(self, action: #selector(signUpBtnTapped), for: .touchUpInside)
+		btn.isEnabled = false
 		return btn
 	}()
 	
@@ -149,16 +167,57 @@ final class RegistrationViewController: UIViewController {
 		)
 	}
 	
-	override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-		 
-	}
-	
 	// MARK: Selectors
 	@objc func addProfilePhoto() {
-		print("?")
+		let imagePicker = UIImagePickerController()
+		imagePicker.delegate = self
+		present(imagePicker, animated: true, completion: nil)
 	}
 	
 	@objc func toLogInVC() {
 		navigationController?.popViewController(animated: true)
+	}
+	
+	@objc func signUpBtnTapped() {
+		print(#function)
+	}
+	
+	@objc func textDidChange(sender: UITextField) {
+		if sender == emailTextField {
+			viewModel.email = sender.text
+		} else if sender == fullNameTextField {
+			viewModel.fullName = sender.text
+		} else if sender == userNameTextField {
+			viewModel.userName = sender.text
+		} else {
+			viewModel.password = sender.text
+		}
+		checkFormStatus()
+	}
+}
+
+extension RegistrationViewController: UIImagePickerControllerDelegate {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		let image = info[.originalImage] as? UIImage
+		addProfilePhotoBtn.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+		addProfilePhotoBtn.layer.borderColor = UIColor(white: 1, alpha: 0.7).cgColor
+		addProfilePhotoBtn.imageView?.contentMode = .scaleAspectFill
+		addProfilePhotoBtn.layer.borderWidth = 1.5
+		addProfilePhotoBtn.layer.cornerRadius = 150 / 2
+		dismiss(animated: true, completion: nil)
+	}
+}
+
+extension RegistrationViewController: AuthrizationCheck {
+	
+	func checkFormStatus() {
+		if viewModel.formIsValid {
+			signUpBtn.isEnabled = true
+			signUpBtn.layer.borderWidth = 0.0
+			signUpBtn.backgroundColor = .systemGreen
+			signUpBtn.setTitleColor(.white, for: .normal)
+		} else {
+			signUpBtn.backgroundColor = .clear
+		}
 	}
 }
