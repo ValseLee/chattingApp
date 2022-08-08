@@ -9,6 +9,8 @@ import UIKit
 
 final class LoginViewController: UIViewController {
 	
+	private var viewModel = LoginViewModel()
+	
 	private let iconImage: UIImageView = {
 		let mainImage = UIImageView()
 		mainImage.image = UIImage(systemName: "bubble.right")
@@ -32,11 +34,17 @@ final class LoginViewController: UIViewController {
 		)
 	}()
 	
-	private let emailTextField = CustomTextFields(placeholder: "Email")
+	private let emailTextField: CustomTextFields = {
+		let tf = CustomTextFields(placeholder: "Email")
+		tf.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+		return tf
+	}()
+	
 	
 	private let passwordTextField: CustomTextFields = {
 		let tf = CustomTextFields(placeholder: "Password")
 		tf.isSecureTextEntry = true
+		tf.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
 		return tf
 	}()
 	
@@ -46,11 +54,12 @@ final class LoginViewController: UIViewController {
 		btn.setTitle("Log In", for: .normal)
 		btn.setTitleColor(.systemPurple, for: .normal)
 		btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-		
 		btn.backgroundColor = .clear
 		btn.layer.borderWidth = 0.75
 		btn.layer.borderColor = UIColor.white.cgColor
 		btn.layer.cornerRadius = 20
+		btn.isEnabled = false
+		btn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
 		return btn
 	}()
 	
@@ -78,7 +87,8 @@ final class LoginViewController: UIViewController {
 		btn.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
 		return btn
 	}()
-
+	
+	// MARK: view
     override func viewDidLoad() {
         super.viewDidLoad()
 		configNavBarUI()
@@ -88,6 +98,7 @@ final class LoginViewController: UIViewController {
 		configSignUpView()
     }
     
+	// MARK: Functions
 	func configNavBarUI() {
 		navigationController?.navigationBar.isHidden = true
 		navigationController?.navigationBar.barStyle = .black
@@ -137,9 +148,33 @@ final class LoginViewController: UIViewController {
 		//		])
 	}
 	
+	func checkFormStatus() {
+		if viewModel.formIsValid {
+			loginBtn.isEnabled = true
+			loginBtn.layer.borderWidth = 0.0
+			loginBtn.backgroundColor = .systemGreen
+			loginBtn.setTitleColor(.white, for: .normal)
+		} else {
+			loginBtn.backgroundColor = .clear
+		}
+	}
+	
 	// MARK: Selectors
 	@objc func showSignUp() {
 		let regiVC = RegistrationViewController()
 		navigationController?.pushViewController(regiVC, animated: true)
+	}
+	
+	@objc func textDidChange(sender: UITextField) {
+		if sender == emailTextField {
+			viewModel.email = sender.text
+		} else {
+			viewModel.password = sender.text
+		}
+		checkFormStatus()
+	}
+	
+	@objc func loginBtnTapped() {
+		print(#function)
 	}
 }

@@ -20,6 +20,7 @@
 		703B3D05289E200600F2CE1D /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3D04289E200600F2CE1D /* extensions.swift */; };
 		70A6113F289E541F0068517D /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6113E289E541F0068517D /* InputContainerView.swift */; };
 		70A61141289E57780068517D /* CustomTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A61140289E57780068517D /* CustomTextFields.swift */; };
+		70D5EA1428A0B1F200907F03 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D5EA1328A0B1F200907F03 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		703B3D04289E200600F2CE1D /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		70A6113E289E541F0068517D /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		70A61140289E57780068517D /* CustomTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFields.swift; sourceTree = "<group>"; };
+		70D5EA1328A0B1F200907F03 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		703B3CF7289E14C000F2CE1D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				70D5EA1328A0B1F200907F03 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			files = (
 				703B3D01289E1C0F00F2CE1D /* LoginViewController.swift in Sources */,
 				703B3CE5289E14A300F2CE1D /* ViewController.swift in Sources */,
+				70D5EA1428A0B1F200907F03 /* LoginViewModel.swift in Sources */,
 				703B3CE1289E14A300F2CE1D /* AppDelegate.swift in Sources */,
 				703B3D05289E200600F2CE1D /* extensions.swift in Sources */,
 				70A6113F289E541F0068517D /* InputContainerView.swift in Sources */,
