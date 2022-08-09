@@ -91,7 +91,7 @@ final class ConversationsViewController: UIViewController {
 	func logout() {
 		do {
 			try Auth.auth().signOut()
-			print("logout succeed")
+			presentLoginScreen()
 		} catch {
 			print(error)
 		}

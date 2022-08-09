@@ -227,7 +227,7 @@ final class RegistrationViewController: UIViewController, UINavigationController
 							print("Failed to upload user Data : \(error.localizedDescription)")
 							return
 						}
-						print("User create Done!")
+						self.dismiss(animated: true, completion: nil)
 					}
 				}
 			}
