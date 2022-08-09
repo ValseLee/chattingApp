@@ -10,12 +10,23 @@ import FirebaseAuth
 
 final class ConversationsViewController: UIViewController {
 	private let tableView = UITableView()
+	
+	private let newMessageBtn: UIButton = {
+		let btn = UIButton(type: .system)
+		btn.setImage(UIImage(systemName: "plus"), for: .normal)
+		btn.backgroundColor = .systemGray
+		btn.tintColor = .white
+		btn.imageView?.setSize(height: 24, width: 24)
+		btn.addTarget(self, action: #selector(newMessageBtnTapped), for: .touchUpInside)
+		return btn
+	}()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		configViewUI()
 		configNavBarUI()
 		configTableView()
+		configNewMessageBtn()
 		authenticateUser()
     }
 	
@@ -63,6 +74,15 @@ final class ConversationsViewController: UIViewController {
 		tableView.dataSource = self
 	}
 	
+	func configNewMessageBtn() {
+		view.addSubview(newMessageBtn)
+		newMessageBtn.setAnchorTRBL(
+			right: view.rightAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
+			paddingRight: 24, paddingBottom: 16, width: 56, height: 56
+		)
+		newMessageBtn.layer.cornerRadius = 56 / 2
+	}
+	
 	func presentLoginScreen() {
 		DispatchQueue.main.async {
 			let controller = LoginViewController()
@@ -74,8 +94,15 @@ final class ConversationsViewController: UIViewController {
 	
 	// MARK: Selectors
 	@objc func showProfile() {
-		print("?")
+		// 임시 함수
 		logout()
+	}
+	
+	@objc func newMessageBtnTapped() {
+		let controller = NewMessageTableViewController()
+		let nav = UINavigationController(rootViewController: controller)
+		nav.modalPresentationStyle = .fullScreen
+		present(nav, animated: true, completion: nil)
 	}
 	
 	// MARK: API

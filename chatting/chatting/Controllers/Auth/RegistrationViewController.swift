@@ -204,7 +204,7 @@ final class RegistrationViewController: UIViewController, UINavigationController
 			profileImage: profileImage
 		)
 		
-		showLoader(true, withText: "Welcome!")
+		showLoader(true, withText: "wait a moment...")
 		
 		AuthService.shared.createUser(credentials: credentials) { error in
 			if let error = error {
@@ -212,7 +212,7 @@ final class RegistrationViewController: UIViewController, UINavigationController
 				self.showLoader(false, withText: error.localizedDescription)
 				return
 			}
-			self.showLoader(false, withText: nil)
+			self.showLoader(false, withText: "Welcome!")
 			self.dismiss(animated: true, completion: nil)
 		}
 	}
