@@ -81,6 +81,8 @@ extension UIView {
 }
 
 extension UIViewController {
+	static let hud = JGProgressHUD(style: .dark)
+	
 	func configGradientBackground() {
 		let gradient = CAGradientLayer()
 		gradient.colors = [UIColor.systemGreen.cgColor, UIColor.systemYellow.cgColor]
@@ -91,13 +93,12 @@ extension UIViewController {
 	
 	func showLoader(_ show: Bool, withText text: String? = "Loading") {
 		view.endEditing(true)
-		let hud = JGProgressHUD(style: .dark)
-		hud.textLabel.text = text
+		UIViewController.hud.textLabel.text = text
 		
 		if show {
-			hud.show(in: self.view)
+			UIViewController.hud.show(in: view)
 		} else {
-			hud.dismiss()
+			UIViewController.hud.dismiss()
 		}
 	}
 }
