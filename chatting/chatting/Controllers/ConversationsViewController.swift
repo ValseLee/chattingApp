@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class ConversationsViewController: UIViewController {
 	private let tableView = UITableView()
@@ -15,6 +16,7 @@ final class ConversationsViewController: UIViewController {
 		configViewUI()
 		configNavBarUI()
 		configTableView()
+		authenticateUser()
     }
 	
 	func configViewUI() {
@@ -61,8 +63,38 @@ final class ConversationsViewController: UIViewController {
 		tableView.dataSource = self
 	}
 	
+	func presentLoginScreen() {
+		DispatchQueue.main.async {
+			let controller = LoginViewController()
+			let nav = UINavigationController(rootViewController: controller)
+			nav.modalPresentationStyle = .fullScreen
+			self.present(nav, animated: true, completion: nil)
+		}
+	}
+	
+	// MARK: Selectors
 	@objc func showProfile() {
 		print("?")
+		logout()
+	}
+	
+	// MARK: API
+	func authenticateUser() {
+		if Auth.auth().currentUser?.uid == nil {
+			print("User not Logged In")
+			presentLoginScreen()
+		} else {
+			print("Logged In, \(Auth.auth().currentUser?.uid)")
+		}
+	}
+	
+	func logout() {
+		do {
+			try Auth.auth().signOut()
+			print("logout succeed")
+		} catch {
+			print(error)
+		}
 	}
 }
 
