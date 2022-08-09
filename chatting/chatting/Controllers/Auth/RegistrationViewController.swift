@@ -131,6 +131,7 @@ final class RegistrationViewController: UIViewController, UINavigationController
 		configAddProfilePhotoBtnView()
 		configStackView()
 		configHaveAnAccountBtnView()
+		configNotification()
 	}
 	
 	func configAddProfilePhotoBtnView() {
@@ -171,6 +172,11 @@ final class RegistrationViewController: UIViewController, UINavigationController
 		)
 	}
 	
+	func configNotification() {
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+	}
+	
 	// MARK: Selectors
 	@objc func addProfilePhoto() {
 		let imagePicker = UIImagePickerController()
@@ -203,10 +209,10 @@ final class RegistrationViewController: UIViewController, UINavigationController
 		AuthService.shared.createUser(credentials: credentials) { error in
 			if let error = error {
 				print("user create Failed : \(error.localizedDescription)")
-				self.showLoader(false)
+				self.showLoader(false, withText: error.localizedDescription)
 				return
 			}
-			self.showLoader(false)
+			self.showLoader(false, withText: nil)
 			self.dismiss(animated: true, completion: nil)
 		}
 	}
@@ -222,6 +228,18 @@ final class RegistrationViewController: UIViewController, UINavigationController
 			viewModel.password = sender.text
 		}
 		checkFormStatus()
+	}
+	
+	@objc func keyboardWillShow() {
+		if view.frame.origin.y == 0 {
+			self.view.frame.origin.y -= 60
+		}
+	}
+	
+	@objc func keyboardWillHide() {
+		if view.frame.origin.y != 0 {
+			self.view.frame.origin.y = 0
+		}
 	}
 }
 
