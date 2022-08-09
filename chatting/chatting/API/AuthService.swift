@@ -23,6 +23,7 @@ struct RegistrationCredentials {
 struct AuthService {
 	typealias AuthDataResultCallback = ((AuthDataResult?, Error?) -> Void)
 	typealias CreateUserDataCallback = ((Error?) -> Void)
+	
 	static let shared = AuthService()
 	
 	func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?) {
@@ -36,19 +37,19 @@ struct AuthService {
 		
 		ref.putData(imageData, metadata: nil) { (meta, error) in
 			if let error = error {
-				print("Failed to upload image : \(error.localizedDescription)")
+				completion!(error)
 				return
 			}
 			
 			ref.downloadURL { (url, error) in
 				guard let ImageUrl = url?.absoluteString else {
-					print("Failed to upload image : \(error?.localizedDescription)")
+					print("Failed to download Image Url : \(error?.localizedDescription)")
 					return
 				}
 				
 				Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
 					if let error = error {
-						print("Failed to create User : \(error.localizedDescription)")
+						completion!(error)
 						return
 					}
 					

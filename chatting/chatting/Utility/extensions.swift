@@ -91,14 +91,15 @@ extension UIViewController {
 		gradient.frame = view.frame
 	}
 	
-	func showLoader(_ show: Bool, withText text: String? = "Loading") {
+	func showLoader(_ show: Bool, withText text: String?) {
 		view.endEditing(true)
-		UIViewController.hud.textLabel.text = text
+		UIViewController.hud.textLabel.text = text ?? ""
 		
 		if show {
 			UIViewController.hud.show(in: view)
 		} else {
-			UIViewController.hud.dismiss()
+			UIViewController.hud.indicatorView = .none
+			UIViewController.hud.dismiss(afterDelay: 2.0, animated: true)
 		}
 	}
 }
