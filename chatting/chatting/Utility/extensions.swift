@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 extension UIView {
 	func setAnchorTRBL(top: NSLayoutYAxisAnchor? = nil,
@@ -86,6 +87,18 @@ extension UIViewController {
 		gradient.locations = [0.0 , 0.5]
 		view.layer.addSublayer(gradient)
 		gradient.frame = view.frame
+	}
+	
+	func showLoader(_ show: Bool, withText text: String? = "Loading") {
+		view.endEditing(true)
+		let hud = JGProgressHUD(style: .dark)
+		hud.textLabel.text = text
+		
+		if show {
+			hud.show(in: self.view)
+		} else {
+			hud.dismiss()
+		}
 	}
 }
 

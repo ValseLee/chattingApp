@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 final class LoginViewController: UIViewController {
 	
@@ -160,12 +161,15 @@ final class LoginViewController: UIViewController {
 	@objc func loginBtnTapped() {
 		guard let email = emailTextField.text else { return }
 		guard let password = passwordTextField.text else { return }
+		showLoader(true, withText: "Logging In...")
 		
 		AuthService.shared.logUserIn(withEmail: email, password: password) { (result, error) in
 			if let error = error {
 				print("error : \(#function), \(error.localizedDescription)")
+				self.showLoader(false)
 				return
 			}
+			self.showLoader(false)
 			self.dismiss(animated: true, completion: nil)
 		}
 	}

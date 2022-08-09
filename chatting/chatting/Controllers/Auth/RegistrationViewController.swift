@@ -198,11 +198,15 @@ final class RegistrationViewController: UIViewController, UINavigationController
 			profileImage: profileImage
 		)
 		
+		showLoader(true, withText: "Welcome!")
+		
 		AuthService.shared.createUser(credentials: credentials) { error in
 			if let error = error {
 				print("user create Failed : \(error.localizedDescription)")
+				self.showLoader(false)
 				return
 			}
+			self.showLoader(false)
 			self.dismiss(animated: true, completion: nil)
 		}
 	}
