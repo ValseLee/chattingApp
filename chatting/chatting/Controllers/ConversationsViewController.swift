@@ -23,8 +23,8 @@ final class ConversationsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		configNavBarUI(withTitle: "Message", prefersLargerTitle: true)
 		configViewUI()
-		configNavBarUI()
 		configTableView()
 		configNewMessageBtn()
 		authenticateUser()
@@ -33,9 +33,7 @@ final class ConversationsViewController: UIViewController {
 	func configViewUI() {
 		view.backgroundColor = .white
 		view.addSubview(tableView)
-	}
-	
-	func configNavBarUI() {
+		
 		let image = UIImage(systemName: "person.circle.fill")
 		navigationItem.leftBarButtonItem = UIBarButtonItem(
 			image: image,
@@ -43,29 +41,13 @@ final class ConversationsViewController: UIViewController {
 			target: self,
 			action: #selector(showProfile)
 		)
-		
-		let appearance = UINavigationBarAppearance()
-		appearance.configureWithOpaqueBackground()
-		appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-		appearance.backgroundColor = .systemGray
-		
-		navigationController?.navigationBar.standardAppearance = appearance
-		navigationController?.navigationBar.compactAppearance = appearance
-		navigationController?.navigationBar.scrollEdgeAppearance = appearance
-		navigationController?.navigationBar.prefersLargeTitles = true
-		navigationController?.navigationBar.tintColor = .white
-		navigationController?.navigationBar.isTranslucent = true
-		
-		// 시계 색 항상 검은색으로
-		navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
-		navigationItem.title = "Messages"
 	}
 	
 	func configTableView() {
 		print(#function)
 		tableView.backgroundColor = .white
 		tableView.rowHeight = 80
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: Cell.cellReuse)
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: Cell.conversationCellReuse)
 	
 		tableView.frame = view.frame
 		tableView.tableFooterView = UIView()
@@ -133,7 +115,7 @@ extension ConversationsViewController: UITableViewDelegate {
 
 extension ConversationsViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: Cell.cellReuse, for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: Cell.conversationCellReuse, for: indexPath)
 		cell.textLabel?.text = "?"
 		return cell
 	}

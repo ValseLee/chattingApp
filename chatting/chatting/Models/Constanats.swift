@@ -8,5 +8,6 @@
 import UIKit
 
 public struct Cell {
-	static let cellReuse = "ConversationCell"
+	static let conversationCellReuse = "ConversationCell"
+	static let newMessageCellReuse = "MessageCell"
 }

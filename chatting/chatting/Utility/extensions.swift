@@ -52,15 +52,9 @@ extension UIView {
 		centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 	}
 	
-	func centerY(inView view: UIView, leftAnchor: NSLayoutXAxisAnchor? = nil,
-				 paddingLeft: CGFloat = 0, constant: CGFloat = 0) {
-		
+	func centerY(inView view: UIView) {
 		translatesAutoresizingMaskIntoConstraints = false
-		centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
-		
-		if let left = leftAnchor {
-			setAnchorTRBL(left: left, paddingLeft: paddingLeft)
-		}
+		centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 	}
 	
 	func setSize(height: CGFloat, width: CGFloat) {
@@ -101,6 +95,25 @@ extension UIViewController {
 			UIViewController.hud.indicatorView = .none
 			UIViewController.hud.dismiss(afterDelay: 2.0, animated: true)
 		}
+	}
+	
+	func configNavBarUI(withTitle title: String, prefersLargerTitle: Bool) {		
+		let appearance = UINavigationBarAppearance()
+		appearance.configureWithOpaqueBackground()
+		appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+		appearance.backgroundColor = .systemGreen
+		
+		navigationController?.navigationBar.standardAppearance = appearance
+		navigationController?.navigationBar.compactAppearance = appearance
+		navigationController?.navigationBar.scrollEdgeAppearance = appearance
+		
+		navigationController?.navigationBar.prefersLargeTitles = prefersLargerTitle
+		navigationController?.navigationBar.tintColor = .white
+		navigationController?.navigationBar.isTranslucent = true
+		
+		// 시계 색 항상 검은색으로
+		navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
+		navigationItem.title = title
 	}
 }
 
