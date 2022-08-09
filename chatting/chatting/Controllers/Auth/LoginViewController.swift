@@ -8,10 +8,6 @@
 import UIKit
 import FirebaseAuth
 
-protocol AuthrizationCheck {
-	func checkFormStatus()
-}
-
 final class LoginViewController: UIViewController {
 	
 	private var viewModel = LoginViewModel()
@@ -144,13 +140,6 @@ final class LoginViewController: UIViewController {
 		iconImage.centerX(inView: view)
 		iconImage.setAnchorTRBL(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
 		iconImage.setSize(height: 120, width: 120)
-		
-		//		NSLayoutConstraint.activate([
-		//			iconImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-		//			iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-		//			iconImage.heightAnchor.constraint(equalToConstant: 120),
-		//			iconImage.widthAnchor.constraint(equalToConstant: 120),
-		//		])
 	}
 	
 	// MARK: Selectors
@@ -171,9 +160,10 @@ final class LoginViewController: UIViewController {
 	@objc func loginBtnTapped() {
 		guard let email = emailTextField.text else { return }
 		guard let password = passwordTextField.text else { return }
-		Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+		
+		AuthService.shared.logUserIn(withEmail: email, password: password) { (result, error) in
 			if let error = error {
-				print("\(error.localizedDescription)")
+				print("error : \(#function), \(error.localizedDescription)")
 				return
 			}
 			self.dismiss(animated: true, completion: nil)

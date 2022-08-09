@@ -88,3 +88,7 @@ extension UIViewController {
 		gradient.frame = view.frame
 	}
 }
+
+protocol AuthrizationCheck {
+	func checkFormStatus()
+}
