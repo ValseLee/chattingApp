@@ -8,11 +8,15 @@
 import UIKit
 
 final class NewMessageTableViewController: UITableViewController {
+	
+	private var users = [User]()
+	
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		configNavBarUI(withTitle: "Hi", prefersLargerTitle: false)
 		configUI()
+		fetchUsers()
 	}
 	
 	func configUI() {
@@ -31,8 +35,17 @@ final class NewMessageTableViewController: UITableViewController {
 	@objc func cancleBtnTapped() {
 		dismiss(animated: true, completion: nil)
 	}
+	
+	// MARK: API
+	func fetchUsers() {
+		Service.fetchUsers { users in
+			self.users = users
+			self.tableView.reloadData()
+		}
+	}
 }
 
+// reloadData() 를 할 때마다 DataSource 프로토콜의 메소드가 실행된다.
 extension NewMessageTableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: Cell.newMessageCellReuse, for: indexPath) as! UserTableViewCell
@@ -40,6 +53,6 @@ extension NewMessageTableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 2
+		return users.count
 	}
 }

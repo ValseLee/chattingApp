@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2402C2E12DDD43186553AAF8 /* Pods_chatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D719B3D1B60C71D3E1DC596 /* Pods_chatting.framework */; };
+		7011FCA828A33C6E0069D1FC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FCA728A33C6E0069D1FC /* User.swift */; };
+		7011FCAA28A33CD10069D1FC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FCA928A33CD10069D1FC /* Service.swift */; };
 		703B3CE1289E14A300F2CE1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CE0289E14A300F2CE1D /* AppDelegate.swift */; };
 		703B3CE3289E14A300F2CE1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CE2289E14A300F2CE1D /* SceneDelegate.swift */; };
 		703B3CE5289E14A300F2CE1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CE4289E14A300F2CE1D /* ViewController.swift */; };
@@ -15,7 +17,7 @@
 		703B3CEA289E14A300F2CE1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 703B3CE9289E14A300F2CE1D /* Assets.xcassets */; };
 		703B3CED289E14A300F2CE1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 703B3CEB289E14A300F2CE1D /* LaunchScreen.storyboard */; };
 		703B3CFC289E150900F2CE1D /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CFB289E150900F2CE1D /* ConversationsViewController.swift */; };
-		703B3CFE289E19D900F2CE1D /* Constanats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CFD289E19D900F2CE1D /* Constanats.swift */; };
+		703B3CFE289E19D900F2CE1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CFD289E19D900F2CE1D /* Constants.swift */; };
 		703B3D01289E1C0F00F2CE1D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3D00289E1C0F00F2CE1D /* LoginViewController.swift */; };
 		703B3D03289E1C1800F2CE1D /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3D02289E1C1800F2CE1D /* RegistrationViewController.swift */; };
 		703B3D05289E200600F2CE1D /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3D04289E200600F2CE1D /* extensions.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		1D719B3D1B60C71D3E1DC596 /* Pods_chatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7011FCA728A33C6E0069D1FC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7011FCA928A33CD10069D1FC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		703B3CDD289E14A300F2CE1D /* chatting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		703B3CE0289E14A300F2CE1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		703B3CE2289E14A300F2CE1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +44,7 @@
 		703B3CEC289E14A300F2CE1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		703B3CEE289E14A300F2CE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		703B3CFB289E150900F2CE1D /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
-		703B3CFD289E19D900F2CE1D /* Constanats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constanats.swift; sourceTree = "<group>"; };
+		703B3CFD289E19D900F2CE1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		703B3D00289E1C0F00F2CE1D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		703B3D02289E1C1800F2CE1D /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		703B3D04289E200600F2CE1D /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -102,10 +106,10 @@
 				703B3CE2289E14A300F2CE1D /* SceneDelegate.swift */,
 				703B3CFA289E14D300F2CE1D /* Utility */,
 				703B3CF9289E14C200F2CE1D /* Models */,
+				703B3CF4289E14B900F2CE1D /* API */,
 				703B3CF8289E14C100F2CE1D /* Views */,
 				703B3CF7289E14C000F2CE1D /* ViewModels */,
 				703B3CF6289E14BE00F2CE1D /* Controllers */,
-				703B3CF4289E14B900F2CE1D /* API */,
 				703B3CE4289E14A300F2CE1D /* ViewController.swift */,
 				703B3CE6289E14A300F2CE1D /* Main.storyboard */,
 				703B3CE9289E14A300F2CE1D /* Assets.xcassets */,
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				7078F29728A20D8500F9267F /* AuthService.swift */,
+				7011FCA928A33CD10069D1FC /* Service.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -155,7 +160,8 @@
 		703B3CF9289E14C200F2CE1D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				703B3CFD289E19D900F2CE1D /* Constanats.swift */,
+				703B3CFD289E19D900F2CE1D /* Constants.swift */,
+				7011FCA728A33C6E0069D1FC /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,13 +320,15 @@
 				70D5EA1628A0BAE200907F03 /* RegistrationViewModel.swift in Sources */,
 				703B3CE5289E14A300F2CE1D /* ViewController.swift in Sources */,
 				70D5EA1428A0B1F200907F03 /* LoginViewModel.swift in Sources */,
+				7011FCA828A33C6E0069D1FC /* User.swift in Sources */,
 				7078F29E28A2550600F9267F /* UserTableViewCell.swift in Sources */,
 				703B3CE1289E14A300F2CE1D /* AppDelegate.swift in Sources */,
 				703B3D05289E200600F2CE1D /* extensions.swift in Sources */,
 				7078F29828A20D8500F9267F /* AuthService.swift in Sources */,
 				70A6113F289E541F0068517D /* InputContainerView.swift in Sources */,
 				7078F29C28A24BB900F9267F /* NewMessageTableViewController.swift in Sources */,
-				703B3CFE289E19D900F2CE1D /* Constanats.swift in Sources */,
+				7011FCAA28A33CD10069D1FC /* Service.swift in Sources */,
+				703B3CFE289E19D900F2CE1D /* Constants.swift in Sources */,
 				70A61141289E57780068517D /* CustomTextFields.swift in Sources */,
 				703B3D03289E1C1800F2CE1D /* RegistrationViewController.swift in Sources */,
 				703B3CE3289E14A300F2CE1D /* SceneDelegate.swift in Sources */,

@@ -44,7 +44,6 @@ final class ConversationsViewController: UIViewController {
 	}
 	
 	func configTableView() {
-		print(#function)
 		tableView.backgroundColor = .white
 		tableView.rowHeight = 80
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: Cell.conversationCellReuse)
@@ -93,7 +92,7 @@ final class ConversationsViewController: UIViewController {
 			print("User not Logged In")
 			presentLoginScreen()
 		} else {
-			print("Logged In, \(Auth.auth().currentUser?.uid)")
+			print("Logged In, \(Auth.auth().currentUser?.uid ?? "")")
 		}
 	}
 	
@@ -102,7 +101,7 @@ final class ConversationsViewController: UIViewController {
 			try Auth.auth().signOut()
 			presentLoginScreen()
 		} catch {
-			print(error)
+			dump(error)
 		}
 	}
 }
