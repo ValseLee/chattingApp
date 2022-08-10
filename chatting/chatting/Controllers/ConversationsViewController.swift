@@ -81,6 +81,7 @@ final class ConversationsViewController: UIViewController {
 	
 	@objc func newMessageBtnTapped() {
 		let controller = NewMessageTableViewController()
+		controller.delegate = self
 		let nav = UINavigationController(rootViewController: controller)
 		nav.modalPresentationStyle = .fullScreen
 		present(nav, animated: true, completion: nil)
@@ -121,5 +122,14 @@ extension ConversationsViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 2
+	}
+}
+
+// MARK: Custom Delegate
+extension ConversationsViewController: NewMessageControllerDelegate {
+	func controller(_ controller: NewMessageTableViewController, wantsToStartChatWith user: User) {
+		controller.dismiss(animated: true, completion: nil)
+		let chat = ChatCollectionViewController(user: user)
+		navigationController?.pushViewController(chat, animated: true)
 	}
 }

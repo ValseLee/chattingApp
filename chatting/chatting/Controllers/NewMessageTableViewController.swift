@@ -7,9 +7,19 @@
 
 import UIKit
 
+
+// MARK: Custom Delegate
+// class를 채택해서 weak 선언이 가능하도록
+protocol NewMessageControllerDelegate: AnyObject {
+	func controller(_ controller: NewMessageTableViewController, wantsToStartChatWith user: User)
+}
+
 final class NewMessageTableViewController: UITableViewController {
 	
 	private var users = [User]()
+	
+	// MARK: Custom Delegation
+	weak var delegate: NewMessageControllerDelegate?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,5 +64,12 @@ extension NewMessageTableViewController {
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return users.count
+	}
+}
+
+// user를 dismiss하고 user 정보를 chat 콜렉션뷰컨으로 넘기자
+extension NewMessageTableViewController {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		delegate?.controller(self, wantsToStartChatWith: users[indexPath.row])
 	}
 }
