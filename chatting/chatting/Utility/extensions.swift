@@ -120,3 +120,7 @@ extension UIViewController {
 protocol AuthrizationCheck {
 	func checkFormStatus()
 }
+
+protocol AuthenticationProtocol {
+	var formIsValid: Bool { get }
+}
