@@ -11,6 +11,7 @@
 		7011FCA828A33C6E0069D1FC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FCA728A33C6E0069D1FC /* User.swift */; };
 		7011FCAA28A33CD10069D1FC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FCA928A33CD10069D1FC /* Service.swift */; };
 		7011FCAC28A366E80069D1FC /* ChatCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FCAB28A366E80069D1FC /* ChatCollectionViewController.swift */; };
+		7011FCAE28A37B2F0069D1FC /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7011FCAD28A37B2F0069D1FC /* CustomInputAccessoryView.swift */; };
 		703B3CE1289E14A300F2CE1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CE0289E14A300F2CE1D /* AppDelegate.swift */; };
 		703B3CE3289E14A300F2CE1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CE2289E14A300F2CE1D /* SceneDelegate.swift */; };
 		703B3CE5289E14A300F2CE1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703B3CE4289E14A300F2CE1D /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 		7011FCA728A33C6E0069D1FC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7011FCA928A33CD10069D1FC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		7011FCAB28A366E80069D1FC /* ChatCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionViewController.swift; sourceTree = "<group>"; };
+		7011FCAD28A37B2F0069D1FC /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
 		703B3CDD289E14A300F2CE1D /* chatting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		703B3CE0289E14A300F2CE1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		703B3CE2289E14A300F2CE1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				70A6113E289E541F0068517D /* InputContainerView.swift */,
 				7078F29D28A2550600F9267F /* UserTableViewCell.swift */,
 				70A61140289E57780068517D /* CustomTextFields.swift */,
+				7011FCAD28A37B2F0069D1FC /* CustomInputAccessoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				703B3D03289E1C1800F2CE1D /* RegistrationViewController.swift in Sources */,
 				703B3CE3289E14A300F2CE1D /* SceneDelegate.swift in Sources */,
 				703B3CFC289E150900F2CE1D /* ConversationsViewController.swift in Sources */,
+				7011FCAE28A37B2F0069D1FC /* CustomInputAccessoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

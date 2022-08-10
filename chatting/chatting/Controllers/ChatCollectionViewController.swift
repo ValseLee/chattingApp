@@ -8,7 +8,13 @@
 import UIKit
 
 final class ChatCollectionViewController: UICollectionViewController {
+	
 	private let user: User
+	
+	private lazy var customInputView: CustomInputAccessoryView = {
+		let input = CustomInputAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
+		return input
+	}()
 	
 	// MARK: Initializer
 	init(user: User) {
@@ -25,8 +31,17 @@ final class ChatCollectionViewController: UICollectionViewController {
 		configUI()
     }
 	
+	override var inputAccessoryView: UIView? {
+		get { return customInputView }
+	}
+	
+	override var canBecomeFirstResponder: Bool {
+		return true
+	}
+	
 	func configUI() {
 		collectionView.backgroundColor = .white
+		configNavBarUI(withTitle: user.userName, prefersLargerTitle: false)
 	}
 
 }
