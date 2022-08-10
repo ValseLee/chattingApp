@@ -11,10 +11,9 @@ final class NewMessageTableViewController: UITableViewController {
 	
 	private var users = [User]()
 	
-
     override func viewDidLoad() {
         super.viewDidLoad()
-		configNavBarUI(withTitle: "Hi", prefersLargerTitle: false)
+		configNavBarUI(withTitle: "New Message", prefersLargerTitle: false)
 		configUI()
 		fetchUsers()
 	}
@@ -49,6 +48,7 @@ final class NewMessageTableViewController: UITableViewController {
 extension NewMessageTableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: Cell.newMessageCellReuse, for: indexPath) as! UserTableViewCell
+		cell.user = users[indexPath.row]
 		return cell
 	}
 	
