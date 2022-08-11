@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseFirestore
+
+let COLLECTION_MESSGES = Firestore.firestore().collection("messages")
 
 public struct Cell {
 	static let conversationCellReuse = "ConversationCell"

@@ -10,8 +10,11 @@ import UIKit
 final class ChatMessageCell: UICollectionViewCell {
 	
 	var message: Message? {
-		didSet { configMessage() }
+		didSet { configMessageCell() }
 	}
+	
+	var bubbleLeftAnchor: NSLayoutConstraint!
+	var bubbleRightAnchor: NSLayoutConstraint!
 	
 	private let profileImageView: UIImageView = {
 		let image = UIImageView()
@@ -62,8 +65,13 @@ final class ChatMessageCell: UICollectionViewCell {
 	func configBubbleChatView() {
 		addSubview(bubbleChatView)
 		bubbleChatView.layer.cornerRadius = 12
-		bubbleChatView.setAnchorTRBL(top: topAnchor, left: profileImageView.rightAnchor, paddingTop: 0, paddingLeft: 12)
+		bubbleChatView.setAnchorTRBL(top: topAnchor)
 		bubbleChatView.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
+		
+		bubbleLeftAnchor = bubbleChatView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 12)
+		bubbleRightAnchor = bubbleChatView.rightAnchor.constraint(equalTo: rightAnchor, constant: -12)
+		bubbleLeftAnchor.isActive = false
+		bubbleRightAnchor.isActive = false
 	}
 	
 	func configChatTextView() {
@@ -74,12 +82,16 @@ final class ChatMessageCell: UICollectionViewCell {
 		)
 	}
 	
-	func configMessage() {
+	func configMessageCell() {
 		guard let message = message else { return }
 		let viewModel = MessageViewModel(message: message)
 		
 		bubbleChatView.backgroundColor = viewModel.messageBackgroundColor
 		chatTextView.textColor = viewModel.messageTextColor
 		chatTextView.text = message.text
+		
+		bubbleLeftAnchor.isActive = viewModel.isSettedToLeft
+		bubbleRightAnchor.isActive = viewModel.isSettedToRight
+		profileImageView.isHidden = viewModel.shouldHideProfileImage
 	}
 }

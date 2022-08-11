@@ -23,6 +23,18 @@ struct MessageViewModel {
 		: .white
 	}
 	
+	var isSettedToRight: Bool {
+		return message.isFromCurrentUser
+	}
+	
+	var isSettedToLeft: Bool {
+		return !message.isFromCurrentUser
+	}
+	
+	var shouldHideProfileImage: Bool {
+		return message.isFromCurrentUser
+	}
+	
 	init(message: Message) {
 		self.message = message
 	}
