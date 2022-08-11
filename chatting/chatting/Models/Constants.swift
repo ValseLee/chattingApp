@@ -11,4 +11,5 @@ public struct Cell {
 	static let conversationCellReuse = "ConversationCell"
 	static let newMessageCellReuse = "MessageCell"
 	static let chatCollectionViewCellReuse = "CollectionCell"
+	static let chatMessageCellReuse = "ChatMessageCell"
 }
