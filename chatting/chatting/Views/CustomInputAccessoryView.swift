@@ -16,10 +16,11 @@ final class CustomInputAccessoryView: UIView {
 	
 	weak var delegate: CustomInputAccessoryViewDelegate?
 	
-	public lazy var messageInputTextView: UITextView = {
+	private lazy var messageInputTextView: UITextView = {
 		let input = UITextView()
 		input.font = .systemFont(ofSize: 16)
 		input.isScrollEnabled = false
+		input.autocorrectionType = .no
 		return input
 	}()
 	
@@ -92,6 +93,11 @@ final class CustomInputAccessoryView: UIView {
 	
 	func setNotification() {
 		NotificationCenter.default.addObserver(self, selector: #selector(textInputDidChange), name: UITextView.textDidChangeNotification, object: nil)
+	}
+	
+	func clearMessageText() {
+		messageInputTextView.text = nil
+		placeholderLabel.isHidden = false
 	}
 	
 	// MARK: Selectors

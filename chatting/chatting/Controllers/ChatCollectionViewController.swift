@@ -32,6 +32,7 @@ final class ChatCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		configUI()
+		fetchMessages()
     }
 	
 	override var inputAccessoryView: UIView? {
@@ -40,6 +41,14 @@ final class ChatCollectionViewController: UICollectionViewController {
 	
 	override var canBecomeFirstResponder: Bool {
 		return true
+	}
+	
+	// MARK: API
+	func fetchMessages() {
+		Service.fetchMessages(forUser: user) { messages in
+			self.messages = messages
+			self.collectionView.reloadData()
+		}
 	}
 	
 	func configUI() {
@@ -82,7 +91,7 @@ extension ChatCollectionViewController: CustomInputAccessoryViewDelegate {
 				print("failed to Uplaod message with Error: \(error.localizedDescription)")
 				return
 			}
-			inputView.messageInputTextView.text = nil
+			inputView.clearMessageText()
 		}
 	}
 }

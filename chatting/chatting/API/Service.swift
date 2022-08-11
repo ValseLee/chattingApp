@@ -37,4 +37,25 @@ struct Service {
 		}
 		dump(data)
 	}
+	
+	static func fetchMessages(forUser user: User, completion: @escaping ([Message]) -> Void) {
+		guard let currentUId = Auth.auth().currentUser?.uid else { return }
+		var messages = [Message]()
+		let query = COLLECTION_MESSGES.document(currentUId).collection(user.uid).order(by: "timestamp")
+		
+		query.addSnapshotListener { (snapshot, error) in
+			snapshot?.documentChanges.forEach { change in
+				switch change.type {
+					case .added:
+						let dictionary = change.document.data()
+						messages.append(Message(dictionary: dictionary))
+						completion(messages)
+					case .modified:
+						print("modified")
+					case .removed:
+						print("removed")
+				}
+			}
+		}
+	}
 }
